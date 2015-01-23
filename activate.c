@@ -113,6 +113,10 @@ static void activate_mapping(struct irq_info *info, void *data __attribute__((un
 	fprintf(file, "%s", buf);
 	fclose(file);
 	info->moved = 0; /*migration is done*/
+
+	if (debug_mode)
+		log(TO_CONSOLE, LOG_INFO,
+		    "IRQ migration is done. IRQ=%d, CPU mask=%s\n", info->irq, buf);
 }
 
 void activate_mappings(void)
